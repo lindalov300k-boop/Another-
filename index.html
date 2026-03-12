@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Mi Lady 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --neon-blue: #00f0ff;
+    --neon-pink: #ff2d78;
+    --neon-red: #ff1744;
+    --deep-bg: #030010;
+    --surface: rgba(255,255,255,0.03);
+    --glow-blue: 0 0 10px #00f0ff, 0 0 30px #00f0ff55, 0 0 60px #00f0ff22;
+    --glow-pink: 0 0 10px #ff2d78, 0 0 30px #ff2d7855, 0 0 60px #ff2d7822;
+    --glow-red: 0 0 10px #ff1744, 0 0 30px #ff174455, 0 0 60px #ff174422;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep-bg);
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff2d78' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E"), auto;
+  }
+
+  /* ───── PARTICLES CANVAS ───── */
+  #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+  /* ───── LOCK SCREEN ───── */
+  #lock-screen {
+    position: fixed; inset: 0; z-index: 1000;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, #0a0020 0%, #030010 70%);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  #lock-screen.fade-out { opacity: 0; transform: scale(1.05); pointer-events: none; }
+
+  .lock-box {
+    text-align: center;
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(255,45,120,0.3);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(20px);
+    max-width: 420px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+  }
+  .lock-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,45,120,0.07), rgba(0,240,255,0.07));
+    pointer-events: none;
+  }
+
+  .lock-heart {
+    font-size: 4rem;
+    animation: heartbeat 1.6s ease-in-out infinite;
+    display: block;
+    margin-bottom: 1.2rem;
+    filter: drop-shadow(0 0 20px #ff2d78);
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.2); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    56% { transform: scale(1); }
+  }
+
+  .lock-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+    margin-bottom: 0.5rem;
+  }
+  .lock-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .lock-input {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,240,255,0.3);
+    border-radius: 50px;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .lock-input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: var(--glow-blue);
+    background: rgba(0,240,255,0.05);
+  }
+  .lock-input.error {
+    border-color: var(--neon-red);
+    box-shadow: var(--glow-red);
+    animation: shake 0.4s ease;
+  }
+  @keyframes shake {
+    0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-6px)} 80%{transform:translateX(6px)}
+  }
+
+  .lock-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-red));
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(255,45,120,0.5);
+  }
+  .lock-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(255,45,120,0.8);
+  }
+
+  .lock-msg {
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+    transition: all 0.3s;
+  }
+  .lock-msg.err { color: var(--neon-red); text-shadow: var(--glow-red); }
+  .lock-msg.ok { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+
+  /* ───── MAIN CONTENT ───── */
+  #main-content { display: none; position: relative; z-index: 1; }
+  #main-content.visible { display: block; }
+
+  /* ───── NAV ───── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(3,0,16,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,45,120,0.15);
+  }
+  .nav-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .nav-links a:hover { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+
+  /* ───── HERO ───── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--neon-blue);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-shadow: var(--glow-blue);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+  .hero-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+  .hero-title span.pink { color: var(--neon-pink); text-shadow: var(--glow-pink); }
+  .hero-title span.blue { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+
+  .hero-poem {
+    max-width: 600px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.75);
+    animation: fadeUp 1s ease 0.7s both;
+    margin-bottom: 3rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    animation: bounce 2s ease infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* ───── HEARTS SECTION ───── */
+  #hearts-section {
+    padding: 6rem 2rem;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 3rem;
+    position: relative;
+  }
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+  }
+
+  .hearts-row {
+    display: flex; flex-wrap: wrap;
+    gap: 4rem; justify-content: center; align-items: flex-start;
+  }
+
+  /* ───── HEART CANVAS ───── */
+  .heart-frame {
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .heart-canvas-wrap {
+    position: relative;
+    width: 220px; height: 200px;
+  }
+  .heart-svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 15px #ff2d78) drop-shadow(0 0 35px #ff174466);
+    animation: heartPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes heartPulse {
+    0%,100% { filter: drop-shadow(0 0 15px #ff2d78) drop-shadow(0 0 35px #ff174466); }
+    50% { filter: drop-shadow(0 0 25px #ff2d78) drop-shadow(0 0 55px #ff2d7888) drop-shadow(0 0 80px #ff174433); }
+  }
+  .heart-img {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    width: 130px; height: 130px;
+    object-fit: cover;
+    clip-path: url(#heartClip);
+    border-radius: 0;
+  }
+  .heart-placeholder {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    width: 130px; height: 130px;
+    background: linear-gradient(135deg, rgba(255,45,120,0.3), rgba(0,240,255,0.3));
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 85%, 18% 100%, 0% 38%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    padding: 1rem;
+  }
+  .heart-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+  }
+  .heart-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.15em;
+  }
+
+  /* ───── CONFESSION SECTION ───── */
+  #confession {
+    padding: 6rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .confession-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    line-height: 2.2;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .confession-line .highlight-pink {
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+    font-weight: 700;
+  }
+  .confession-line .highlight-blue {
+    color: var(--neon-blue);
+    text-shadow: var(--glow-blue);
+  }
+  .confession-line .highlight-red {
+    color: var(--neon-red);
+    text-shadow: var(--glow-red);
+  }
+  .big-confession {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: var(--neon-pink);
+    text-shadow: var(--glow-pink);
+    display: block;
+    margin: 2rem 0;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100%{text-shadow: var(--glow-pink);}
+    50%{text-shadow: 0 0 20px #ff2d78, 0 0 60px #ff2d78, 0 0 100px #ff174466;}
+  }
+  .divider {
+    width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+    margin: 3rem auto;
+  }
+  .signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--neon-blue);
+    text-shadow: var(--glow-blue);
+    margin-top: 2rem;
+  }
+  .signature-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.25em;
+    margin-top: 0.3rem;
+  }
+
+  /* ───── PROMISES SECTION ───── */
+  #promises {
+    padding: 6rem 2rem;
+    position: relative;
+  }
+  .promises-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .promises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .promise-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,45,120,0.2);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  .promise-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at top left, rgba(255,45,120,0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .promise-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-pink);
+    box-shadow: 0 10px 40px rgba(255,45,120,0.2);
+  }
+  .promise-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .promise-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px #00f0ff44;
+    margin-bottom: 0.6rem;
+  }
+  .promise-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* ───── MUSIC SECTION ───── */
+  #music {
+    padding: 6rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .player-wrap {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(0,240,255,0.2);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .player-wrap::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(0,240,255,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .player-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .track-list { list-style: none; }
+  .track-item {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-align: left;
+  }
+  .track-item:hover {
+    background: rgba(255,45,120,0.08);
+  }
+  .track-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+    min-width: 1.5rem;
+    text-align: center;
+  }
+  .track-play {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-red));
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(255,45,120,0.4);
+    font-size: 0.9rem;
+  }
+  .track-play:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(255,45,120,0.7); }
+  .track-info { flex: 1; }
+  .track-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .track-artist {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.2rem;
+  }
+  .track-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(0,240,255,0.4);
+    letter-spacing: 0.08em;
+  }
+  audio { display: none; }
+
+  .add-song-hint {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed rgba(0,240,255,0.25);
+    border-radius: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(0,240,255,0.4);
+  }
+
+  /* ───── FLOATING HEARTS ───── */
+  .float-heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.2rem;
+    animation: floatUp 4s ease forwards;
+    z-index: 999;
+  }
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(-300px) scale(0.3) rotate(30deg); }
+  }
+
+  /* ───── FOOTER ───── */
+  footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,45,120,0.1);
+  }
+  .footer-heart { font-size: 3rem; display: block; margin-bottom: 1rem; animation: heartbeat 1.6s ease-in-out infinite; }
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.15em;
+  }
+
+  /* ───── DECORATIVE LINES ───── */
+  .neon-line-h {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--neon-blue) 30%, var(--neon-pink) 70%, transparent 100%);
+    opacity: 0.3;
+    margin: 2rem 0;
+  }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hearts-row { gap: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- SVG DEFS for heart clip -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+      <path d="M0.5,0.85 C0.1,0.6 -0.05,0.3 0.15,0.12 C0.25,0.04 0.38,0.05 0.5,0.2 C0.62,0.05 0.75,0.04 0.85,0.12 C1.05,0.3 0.9,0.6 0.5,0.85 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- LOCK SCREEN -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="lock-screen">
+  <div class="lock-box">
+    <span class="lock-heart">🔐</span>
+    <div class="lock-title">A Secret Letter Awaits</div>
+    <div class="lock-subtitle">Only she who holds the key may enter…</div>
+    <input class="lock-input" id="password-input" type="password" placeholder="Whisper the password…" autocomplete="off"/>
+    <button class="lock-btn" onclick="checkPassword()">Open My Heart ❤️</button>
+    <div class="lock-msg" id="lock-msg"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- BACKGROUND AUDIO -->
+<!-- ═══════════════════════════════════════════════ -->
+<!--
+  🎵 SONG PLACEHOLDER — Replace the src below with your audio file URL
+  Recommended: Upload to a file host (e.g. Google Drive public link, Dropbox)
+  and paste the direct link as the src attribute.
+
+  Example:
+  <audio id="bg-audio" loop>
+    <source src="https://your-audio-host.com/your-love-song.mp3" type="audio/mpeg">
+  </audio>
+-->
+<audio id="bg-audio" loop>
+  <source src="Married life.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- MAIN CONTENT -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="main-content">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Mi Lady 💕</div>
+    <div class="nav-links">
+      <a href="#hearts-section">Us</a>
+      <a href="#confession">My Confession</a>
+      <a href="#promises">My Promises</a>
+      <a href="#music">Our Melody</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-eyebrow">✦ A Love Letter From The Stars ✦</div>
+    <h1 class="hero-title">
+      To <span class="pink">Mi Lady</span>,<br/>
+      My <span class="blue">Everything</span>
+    </h1>
+    <p class="hero-poem">
+      "In all the universe's grand design,<br/>
+      across a thousand stars that shine —<br/>
+      the cosmos conspired, time stood still,<br/>
+      the moment you walked into my world."
+    </p>
+    <div class="neon-line-h"></div>
+    <span class="scroll-hint">↓ scroll to read ↓</span>
+  </section>
+
+  <!-- HEARTS -->
+  <section id="hearts-section">
+    <div class="section-label">✦ Two Hearts, One Story ✦</div>
+    <h2 class="section-title">Where Love Lives</h2>
+    <div class="hearts-row">
+
+      <!-- MI LADY'S HEART -->
+      <div class="heart-frame">
+        <div class="heart-canvas-wrap">
+          <svg class="heart-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff2d78"/>
+                <stop offset="100%" stop-color="#ff1744"/>
+              </linearGradient>
+            </defs>
+            <path d="M110,170 C50,140 10,100 10,65 C10,40 30,20 55,20 C75,20 95,32 110,50 C125,32 145,20 165,20 C190,20 210,40 210,65 C210,100 170,140 110,170 Z"
+              fill="url(#hg1)" opacity="0.18"/>
+            <path d="M110,170 C50,140 10,100 10,65 C10,40 30,20 55,20 C75,20 95,32 110,50 C125,32 145,20 165,20 C190,20 210,40 210,65 C210,100 170,140 110,170 Z"
+              fill="none" stroke="url(#hg1)" stroke-width="2"/>
+          </svg>
+
+            <img class="heart-img" src="Love.jpg" alt="Mi Lady"/>
+            
+          <div class="heart-placeholder">
+            📸<br/>Mi Lady's<br/>Photo Here
+          </div>
+        </div>
+        <div class="heart-name">Mi Lady 💕</div>
+        <div class="heart-role">My Queen • My Universe</div>
+      </div>
+
+      <!-- CONNECTOR -->
+      <div style="display:flex;align-items:center;font-size:3rem;color:var(--neon-red);text-shadow:var(--glow-red);animation:heartbeat 1.6s ease-in-out infinite;">
+        ❤️
+      </div>
+
+      <!-- SAMUEL'S HEART -->
+      <div class="heart-frame">
+        <div class="heart-canvas-wrap">
+          <svg class="heart-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f0ff"/>
+                <stop offset="100%" stop-color="#ff2d78"/>
+              </linearGradient>
+            </defs>
+            <path d="M110,170 C50,140 10,100 10,65 C10,40 30,20 55,20 C75,20 95,32 110,50 C125,32 145,20 165,20 C190,20 210,40 210,65 C210,100 170,140 110,170 Z"
+              fill="url(#hg2)" opacity="0.18"/>
+            <path d="M110,170 C50,140 10,100 10,65 C10,40 30,20 55,20 C75,20 95,32 110,50 C125,32 145,20 165,20 C190,20 210,40 210,65 C210,100 170,140 110,170 Z"
+              fill="none" stroke="url(#hg2)" stroke-width="2"/>
+          </svg>
+
+            <img class="heart-img" src="sam.jpg" alt="Samuel"/>
+            
+          <div class="heart-placeholder">
+            📸<br/>Samuel's<br/>Photo Here
+          </div>
+        </div>
+        <div class="heart-name" style="color:var(--neon-blue);text-shadow:var(--glow-blue);">Samuel ✨</div>
+        <div class="heart-role">CosmicDev • Her Devoted One</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONFESSION -->
+  <section id="confession">
+    <div class="section-label">✦ From The Depths of My Soul ✦</div>
+    <h2 class="section-title">My Confession</h2>
+
+    <p class="confession-line">
+      From the moment I first saw you, <span class="highlight-pink">something shifted</span> in my universe.
+      Like a star finding its orbit, I found <span class="highlight-blue">myself finding you.</span>
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="confession-line">
+      I, <span class="highlight-blue">Samuel Kofigah — CosmicDev</span>, with every star as my witness,
+      with every heartbeat that echoes through the cosmos,
+      stand before you in the most <span class="highlight-pink">honest and trembling vulnerability</span>
+      a soul can offer.
+    </p>
+
+    <p class="confession-line">
+      You are not just beautiful — you are the kind of beautiful that makes
+      <span class="highlight-red">poetry feel inadequate,</span>
+      the kind that makes the sun envious of how you light up every room.
+    </p>
+
+    <p class="confession-line">
+      Your laugh is the melody I didn't know I'd been searching for.
+      Your presence is the warmth that makes every cold night
+      <span class="highlight-pink">feel like home.</span>
+    </p>
+
+    <span class="big-confession">I Love You, Mi Lady.</span>
+
+    <p class="confession-line">
+      Not the fleeting kind. Not the kind that fades when life gets heavy.
+      I mean the kind of love that <span class="highlight-blue">chooses you every single morning,</span>
+      that fights for you in every silence, that never runs out — even when everything else does.
+    </p>
+
+    <p class="confession-line">
+      I am willing to <span class="highlight-red">move mountains if that's what it takes.</span>
+      To walk through storms. To wait through seasons.
+      To be whatever you need, for as long as you'll have me.
+    </p>
+
+    <p class="confession-line">
+      You deserve a love that feels like <span class="highlight-pink">the first breath of spring,</span>
+      like stars colliding, like everything good the universe has ever whispered —
+      and I want to be that love for you.
+    </p>
+
+    <p class="confession-line" style="margin-top:2rem;">
+      <em>"If the cosmos were a canvas,<br/>
+      I would paint you across every galaxy.<br/>
+      I would write your name in constellations,<br/>
+      so every eye that searches the night sky<br/>
+      knows what <span class="highlight-blue">my heart has always known —</span><br/>
+      <span class="highlight-pink">you are the most beautiful thing in existence."</span></em>
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="signature">— Samuel Kofigah</div>
+    <div class="signature-sub">aka CosmicDev · Devoted To You · Always</div>
+  </section>
+
+  <!-- PROMISES -->
+  <section id="promises">
+    <div class="promises-inner">
+      <div class="section-label">✦ Written in Stars ✦</div>
+      <h2 class="section-title">My Promises to You</h2>
+      <div class="promises-grid">
+        <div class="promise-card">
+          <span class="promise-icon">🌙</span>
+          <div class="promise-title">I Will Always Be There</div>
+          <div class="promise-body">In the darkest nights and the brightest dawns — I promise to be your constant, your safe place, your home.</div>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">🌊</span>
+          <div class="promise-title">I Will Fight For You</div>
+          <div class="promise-body">Through every storm, every obstacle — I will choose you with intention and with fire, every single time.</div>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">🌸</span>
+          <div class="promise-title">I Will Cherish You</div>
+          <div class="promise-body">Every laugh, every tear, every quiet moment — I will treasure all of you, the way you deserve to be treasured.</div>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">⭐</span>
+          <div class="promise-title">I Will Grow With You</div>
+          <div class="promise-body">Side by side, dream by dream — I want to build something beautiful with you that stands the test of every season.</div>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">🔥</span>
+          <div class="promise-title">I Will Do Anything For You</div>
+          <div class="promise-body">There is nothing too great, no distance too far. Say the word, and I will move the world for you, Mi Lady.</div>
+        </div>
+        <div class="promise-card">
+          <span class="promise-icon">💫</span>
+          <div class="promise-title">I Will Love You Endlessly</div>
+          <div class="promise-body">Not conditionally. Not quietly. But loudly, boldly, across every lifetime the universe dares to give us.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="section-label">✦ Our Soundtrack ✦</div>
+    <h2 class="section-title">Songs That Carry My Heart to You</h2>
+    <div class="player-wrap">
+      <p class="player-note">🎵 Every note, a word I couldn't find. Every melody, a feeling only you inspire.</p>
+
+      <ul class="track-list" id="track-list">
+        <!--
+          🎵 HOW TO ADD SONGS:
+          Copy one <li> block below and fill in:
+          - data-src: your MP3/audio URL
+          - .track-name: Song title
+          - .track-artist: Artist name
+
+          The play button will automatically work once you add the src.
+        -->
+        <li class="track-item" data-src="Lonely.mp3">
+          <span class="track-num">01</span>
+          <button class="track-play" onclick="playTrack(this)">▶</button>
+          <div class="track-info">
+            <div class="track-name">Lonely</div>
+            <div class="track-artist">Akon</div>
+          </div>
+        </li>
+        <li class="track-item" data-src="Perfect.mp3">
+          <span class="track-num">02</span>
+          <button class="track-play" onclick="playTrack(this)">▶</button>
+          <div class="track-info">
+            <div class="track-name">Perfect</div>
+            <div class="track-artist">Ed Sheeran</div>
+          </div>
+        </li>
+        <li class="track-item" data-src="Had to leave.mp3">
+          <span class="track-num">03</span>
+          <button class="track-play" onclick="playTrack(this)">▶</button>
+          <div class="track-info">
+            <div class="track-name">Had to Leave</div>
+            <div class="track-artist">Babytakeoff</div>
+          </div>
+        </li>
+        <li class="track-item" data-src="Falling.mp3">
+          <span class="track-num">04</span>
+          <button class="track-play" onclick="playTrack(this)">▶</button>
+          <div class="track-info">
+            <div class="track-name">Falling</div>
+            <div class="track-artist">Madara Dusal</div>
+          </div>
+        </li>
+      </ul>
+
+      <audio id="track-player"></audio>
+
+      <div class="add-song-hint">
+        💡 Place your MP3 files in the same folder as this HTML file for the music to work.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-heart">❤️</span>
+    <p class="footer-text">Written by CosmicDev · Samuel Kofigah · With Infinite Love · For Mi Lady · Always &amp; Forever</p>
+    <br/>
+    <p class="footer-text" style="color:rgba(255,45,120,0.3);margin-top:0.5rem;">✦ Because loving you is the most human thing I've ever done ✦</p>
+  </footer>
+
+</div><!-- end main-content -->
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════ -->
+<script>
+// ───── PASSWORD CHECK ─────
+function checkPassword() {
+  const input = document.getElementById('password-input');
+  const msg = document.getElementById('lock-msg');
+  const val = input.value.trim().toLowerCase();
+
+  if (val === 'love is blind') {
+    msg.textContent = '💖 Opening your heart… Welcome, Mi Lady…';
+    msg.className = 'lock-msg ok';
+    setTimeout(() => {
+      document.getElementById('lock-screen').classList.add('fade-out');
+      setTimeout(() => {
+        document.getElementById('lock-screen').style.display = 'none';
+        document.getElementById('main-content').classList.add('visible');
+        startBgAudio();
+        launchEntrance();
+      }, 800);
+    }, 1000);
+  } else {
+    msg.textContent = '💔 That\'s not quite right, my love… Try again.';
+    msg.className = 'lock-msg err';
+    input.classList.add('error');
+    setTimeout(() => input.classList.remove('error'), 600);
+    input.value = '';
+  }
+}
+
+document.getElementById('password-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPassword();
+});
+
+// ───── START BACKGROUND AUDIO ─────
+function startBgAudio() {
+  const audio = document.getElementById("bg-audio");
+
+  if (audio) {
+    audio.volume = 1;
+    audio.play().catch(() => {});
+  }
+}
+
+// ───── TRACK PLAYER ─────
+let currentBtn = null;
+function playTrack(btn) {
+  const li = btn.closest('li');
+  const src = li.dataset.src;
+  const player = document.getElementById('track-player');
+
+  if (!src) {
+    btn.style.animation = 'shake 0.4s ease';
+    setTimeout(() => btn.style.animation = '', 500);
+    return;
+  }
+
+  if (currentBtn && currentBtn !== btn) {
+    currentBtn.textContent = '▶';
+  }
+  if (player.src === src && !player.paused) {
+    player.pause();
+    btn.textContent = '▶';
+    currentBtn = null;
+  } else {
+    player.src = src;
+    player.loop = true;
+    player.volume = 0.8;
+    player.play().catch(() => {});
+    btn.textContent = '⏸';
+    currentBtn = btn;
+  }
+}
+
+// ───── ENTRANCE ANIMATION ─────
+function launchEntrance() {
+  spawnHearts(20);
+}
+
+// ───── FLOATING HEARTS ─────
+function spawnHearts(count) {
+  const symbols = ['❤️','💕','💖','💗','💓','💞','💝','🌸'];
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'float-heart';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.bottom = '-2rem';
+      el.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
+      el.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 6000);
+    }, i * 150);
+  }
+}
+
+// Click anywhere on main to spawn hearts
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('main-content').classList.contains('visible')) return;
+  const el = document.createElement('div');
+  el.className = 'float-heart';
+  el.textContent = ['❤️','💕','💖'][Math.floor(Math.random()*3)];
+  el.style.left = (e.clientX - 12) + 'px';
+  el.style.top = (e.clientY - 12) + 'px';
+  el.style.position = 'fixed';
+  el.style.animationDuration = '2s';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2500);
+});
+
+// ───── PARTICLE CANVAS ─────
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize();
+
+  function init() {
+    particles = [];
+    const count = Math.floor(W * H / 15000);
+    const colors = ['#ff2d78', '#00f0ff', '#ff1744', '#ffffff'];
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.5 + 0.2,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.5 + 0.1,
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0) p.x = W;
+      if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H;
+      if (p.y > H) p.y = 0;
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  init();
+  draw();
+})();
+
+// ───── SCROLL REVEAL ─────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.promise-card, .confession-line').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(25px)';
+  el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
